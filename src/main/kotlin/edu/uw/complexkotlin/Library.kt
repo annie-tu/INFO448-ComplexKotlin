@@ -23,6 +23,46 @@ val fizzbuzz : (IntRange) -> String = { nums -> nums.map { when (it) {
 }}.fold("", { acc, elem -> acc + elem } )
 }
 
+val fizzbuzz2: (IntRange) -> String = { range ->
+    range.map { number ->
+        when {
+            number % 3 == 0 && number % 5 == 0 -> "FIZZBUZZ"
+            number % 3 == 0 -> "FIZZ"
+            number % 5 == 0 -> "BUZZ"
+            else -> ""
+        }
+    }.fold("") { acc, str -> acc + str }
+}
+
+val fizzbuzz3: (IntRange) -> String = { range ->
+    range.map { number ->
+        when {
+            number % 3 == 0 && number % 5 == 0 && number % 7 == 0-> "FIZZBUZZDOH"
+            number % 3 == 0 && number % 5 == 0 -> "FIZZBUZZ"
+            number % 3 == 0 && number % 7 == 0 -> "FIZZDOH"
+            number % 5 == 0 && number % 7 == 0 -> "BUZZDOH"
+            number % 3 == 0 -> "FIZZ"
+            number % 5 == 0 -> "BUZZ"
+            number % 7 == 0 -> "DOH"
+            else -> ""
+        }
+    }.fold("") { acc, str -> acc + str }
+}
+
+fun fizzbuzzgen(divisorStrings: Map<Int, String>): (IntRange) -> String {
+    return { range ->
+        range.map { number ->
+            val result = StringBuilder()
+            for ((divisor, output) in divisorStrings) {
+                if (number % divisor == 0) {
+                    result.append(output)
+                }
+            }
+            result.toString()
+        }.joinToString("")
+    }
+}
+
 // Example usage
 /*
 if (fizzbuzz(0..1) == "")
