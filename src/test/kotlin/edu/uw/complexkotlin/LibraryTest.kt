@@ -33,6 +33,11 @@ class LibraryTest {
     }
     // TESTS for fizzbuzzgen 
     @Test fun fizzbuzzgen() {
+        val fizzbuzz3and5 = fizzbuzzgen(mapOf(3 to "FIZZ", 5 to "BUZZ"))
+        val fizzbuzz3and5and7 = fizzbuzzgen(mapOf(3 to "FIZZ", 5 to "BUZZ", 7 to "DOH"))
+
+        assertEquals("FIZZBUZZFIZZFIZZBUZZFIZZFIZZBUZZ", fizzbuzz3and5(1..15))
+        assertEquals("FIZZBUZZFIZZDOHFIZZBUZZFIZZDOHFIZZBUZZFIZZBUZZFIZZDOH", fizzbuzz3and5and7(1..22))
     }
 
 
