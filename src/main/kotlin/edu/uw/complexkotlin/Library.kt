@@ -106,6 +106,16 @@ enum class Philosopher {
     abstract fun signal(): Philosopher
 }
 
+/* EXTRA CREDIT
+Sources: https://plato.stanford.edu/entries/seneca/
+Seneca the Younger (Lucius Annaeus Seneca) was a philosopher of the Roman Imperial period,
+and he was a major contributer to Stoicism, a philosophical school of thought that was revived
+in the Renaissance. He was mostly known for his plays and his writings on Stoicism.
+
+Virtue is the only good, and it consists in a will that is in agreement with Nature.
+*/
+
+
 // create an class "Command" that can be used as a function (provide an "invoke()" function)
 // that takes a single parameter ("message" of type String)
 // primary constructor should take a String argument ("prompt")
