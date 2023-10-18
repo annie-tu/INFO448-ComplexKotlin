@@ -17,7 +17,6 @@ class LibraryTest {
     @Test fun fizzbuzzToTwelve() {
         assertEquals("FIZZBUZZFIZZFIZZBUZZFIZZ", fizzbuzz(0..12))
     }
-
     @Test fun r1Test() {
         assertEquals(">>> FOO: {BAR}", r1())
     }

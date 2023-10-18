@@ -14,8 +14,14 @@ class Library {
 // use fold() to compress the array of strings down into a single string.
 // the final string should look like FIZZBUZZFIZZFIZZBUZZFIZZFIZZBUZZ for 0..15.
 // store this lambda into 'fizzbuzz' so that the tests can call it
-//
-
+val fizzbuzz : (IntRange) -> String = { nums -> nums.map { when (it) {
+    in listOf(15) -> "FIZZBUZZ"
+    in listOf(3, 6, 9, 12, 15) -> "FIZZ"
+    in listOf(5, 10, 15) -> "BUZZ"
+    // in listOf(7) -> "DOH"
+    else -> ""
+}}.fold("", { acc, elem -> acc + elem } )
+}
 
 // Example usage
 /*
@@ -40,13 +46,32 @@ fun process(message: String, block: (String) -> String): String {
     return ">>> ${message}: {" + block(message) + "}"
 }
 // Create r1 as a lambda that calls process() with message "FOO" and a block that returns "BAR"
+val r1 = {process("FOO") {"BAR"}}
 
 // Create r2 as a lambda that calls process() with message "FOO" and a block that upper-cases 
 // r2_message, and repeats it three times with no spaces: "WOOGAWOOGAWOOGA"
+val r2_message = "wooga"
+val r2 = {process("FOO") {r2_message.toUpperCase().repeat(3)}}
 
 // write an enum-based state machine between talking and thinking
+enum class Philosopher {
+    THINKING {
+        override fun signal() = TALKING
+        override fun toString() = "Deep thoughts...."
+    },
+    TALKING {
+        override fun signal() = THINKING
+        override fun toString() = "Allow me to suggest an idea..."
+    };
+    abstract fun signal(): Philosopher
+}
 
 // create an class "Command" that can be used as a function (provide an "invoke()" function)
 // that takes a single parameter ("message" of type String)
 // primary constructor should take a String argument ("prompt")
 // when invoked, the Command object should return a String containing the prompt and then the message
+class Command(val prompt : String) {
+    public operator fun invoke(message: String): String {
+        return prompt + message
+    }
+}
